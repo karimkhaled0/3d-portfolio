@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./splash.scss";
+import ParticlesComponent from "@/components/providers/ParticlesComponent";
+import Header from "@/components/header/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +16,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen bg-black overflow-hidden">{children}</body>
+      <body className="min-h-screen font-cabin scrollbar-non">
+        {/* Splash screen */}
+        <div className="splash">
+          <div className="splash_logo">KARIM</div>
+          <div className="splash_svg">
+            <svg width="100%" height="100%">
+              <rect width="100%" height="100%" />
+            </svg>
+          </div>
+          <div className="splash_minimize">
+            <svg width="100%" height="100%">
+              <rect width="100%" height="100%" />
+            </svg>
+          </div>
+        </div>
+
+        <Header />
+        <div id="particles" className="relative">
+          <ParticlesComponent />
+        </div>
+
+        <div id="children" className="relative z-40">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
