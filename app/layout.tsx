@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./splash.scss";
 import ParticlesComponent from "@/components/providers/ParticlesComponent";
-import Header from "@/components/header/Header";
+import Header from "@/components/web/header/Header";
+import { headers } from "next/headers";
+import MobileHeader from "@/components/mobile/header/MobileHeader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +16,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const userAgent = headersList.get("user-agent");
+  const isMobile = userAgent!.includes("Mobile");
+  if (isMobile) {
+    return (
+      <html lang="en">
+        <body className="min-h-screen font-cabin scrollbar-non bg-white">
+          <MobileHeader />
+          <div id="particles" className="relative">
+            <ParticlesComponent />
+          </div>
+          <div className="relative z-30">{children}</div>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en">
       <body className="min-h-screen font-cabin scrollbar-non">

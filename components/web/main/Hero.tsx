@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import KarimImage from "@/images/landpage/karim.png";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Suspense, useRef } from "react";
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../../ui/skeleton";
 import ManModel from "./ManModel";
 type Props = {};
 

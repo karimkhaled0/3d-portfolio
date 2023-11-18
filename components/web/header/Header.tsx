@@ -18,11 +18,11 @@ const Header = (props: Props) => {
         <Logo />
 
         <div className="flex items-center space-x-10">
-          <Link href="/">
+          <Link href="/#">
             <h2
               className={cn(
                 "font-bold",
-                activeLink === "/" && "text-violet-500"
+                activeLink === "/#" && "text-violet-500"
               )}
             >
               Home
@@ -31,18 +31,18 @@ const Header = (props: Props) => {
           <Link
             className={cn(
               "font-bold",
-              activeLink === "/projects" && "text-violet-500"
+              activeLink === "/#projects" && "text-violet-500"
             )}
-            href="/projects"
+            href="/#projects"
           >
             <h2>Projects</h2>
           </Link>
           <Link
             className={cn(
               "font-bold",
-              activeLink === "/about" && "text-violet-500"
+              activeLink === "/#about" && "text-violet-500"
             )}
-            href="/about"
+            href="/#about"
           >
             <h2>About</h2>
           </Link>
@@ -50,9 +50,9 @@ const Header = (props: Props) => {
           <Link
             className={cn(
               "font-bold",
-              activeLink === "/contact" && "text-violet-500"
+              activeLink === "/#contact" && "text-violet-500"
             )}
-            href="/contact"
+            href="/#contact"
           >
             <h2>Contact</h2>
           </Link>
