@@ -1,3 +1,4 @@
+"use client";
 import { useRef } from "react";
 import {
   motion,
@@ -9,13 +10,19 @@ import {
   useAnimationFrame,
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
+import { cn } from "@/lib/utils";
 
 interface ParallaxProps {
   children: string;
   baseVelocity: number;
+  flipped?: boolean;
 }
 
-function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
+function ParallaxText({
+  children,
+  baseVelocity = 100,
+  flipped,
+}: ParallaxProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -63,24 +70,37 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
   return (
     <div className="parallax">
       <motion.div className="scroller" style={{ x }}>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
-        <span>{children} </span>
+        <span className={cn("", flipped && "rotate-180")}>{children} </span>
+        <span className={cn("", flipped && "rotate-180")}>{children} </span>
+        <span className={cn("", flipped && "rotate-180")}>{children} </span>
+        <span className={cn("", flipped && "rotate-180")}>{children} </span>
       </motion.div>
     </div>
   );
 }
 
-export default function App() {
+export default function Velocity() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["1 0", "1.33 1"],
+  });
+  const scaleProgress = useTransform(scrollYProgress, [1, 0], [1, 1]);
   return (
-    <section className="relative py-40 space-y-5">
+    <motion.section
+      ref={ref}
+      style={{
+        scale: scaleProgress,
+        opacity: scrollYProgress,
+      }}
+      className="relative pt-40 space-y-5"
+    >
       <ParallaxText baseVelocity={-2}>
         Projects&#160;&#160;Projects&#160;&#160;Projects
       </ParallaxText>
-      <ParallaxText baseVelocity={1}>
-        Developer&#160;&#160;Developer&#160;&#160;Developer&#160;&#160;Developer
+      <ParallaxText baseVelocity={1} flipped>
+        Projects&#160;&#160;Projects&#160;&#160;Projects
       </ParallaxText>
-    </section>
+    </motion.section>
   );
 }

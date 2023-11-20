@@ -1,14 +1,16 @@
 "use client";
-import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import KarimImage from "@/images/landpage/karim.png";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
-import { Suspense, useRef } from "react";
-import { Skeleton } from "../../ui/skeleton";
-import ManModel from "./ManModel";
-type Props = {};
 
-const Hero = (props: Props) => {
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { MouseEvent, Suspense, useRef } from "react";
+import ManModel from "./ManModel";
+
+type Props = {
+  invertedEnter: (event: MouseEvent<HTMLDivElement>) => void;
+  mouseLeave: (event: MouseEvent<HTMLDivElement>) => void;
+};
+
+const Hero = ({ invertedEnter, mouseLeave }: Props) => {
   const [text, count] = useTypewriter({
     words: ["Ready to build your next project ?"],
     loop: false,
@@ -31,7 +33,7 @@ const Hero = (props: Props) => {
         }}
         className="space-y-5 w-full cursor-default my-40 mx-20"
       >
-        <h1 className="text-[150px] leading-none">
+        <h1 className="text-[150px] leading-none inverted">
           <motion.span
             whileHover={{
               color: "#8b5cf6",
@@ -117,7 +119,11 @@ const Hero = (props: Props) => {
             D
           </motion.span>
         </h1>
-        <h2 className="text-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-transparent bg-clip-text px-4 py-1 tracking-[20px] rounded-sm">
+        <h2
+          onMouseEnter={invertedEnter}
+          onMouseLeave={mouseLeave}
+          className="text-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-transparent bg-clip-text px-4 py-1 tracking-[20px] rounded-sm"
+        >
           FULL STACK DEVELOPER
         </h2>
         <div className="flex items-center">
@@ -126,9 +132,7 @@ const Hero = (props: Props) => {
         </div>
       </motion.div>
       <div className="w-full">
-        <Suspense
-          fallback={<Skeleton className="h-[900px] w-[900px] bg-gray-400" />}
-        >
+        <Suspense fallback={null}>
           {/* image */}
           {/* <Image
             src={KarimImage}

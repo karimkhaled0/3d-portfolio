@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./splash.scss";
-import ParticlesComponent from "@/components/providers/ParticlesComponent";
-import Header from "@/components/web/header/Header";
 import { headers } from "next/headers";
 import MobileHeader from "@/components/mobile/header/MobileHeader";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/mousewheel";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +25,8 @@ export default function RootLayout({
   if (isMobile) {
     return (
       <html lang="en">
-        <body className="min-h-screen font-cabin scrollbar-non bg-white">
+        <body className="min-h-screen font-cabin scrollbar-none bg-white cursor-none">
           <MobileHeader />
-          <div id="particles" className="relative">
-            <ParticlesComponent />
-          </div>
           <div className="relative z-30">{children}</div>
         </body>
       </html>
@@ -35,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="min-h-screen font-cabin scrollbar-non">
+      <body className="min-h-screen font-cabin scrollbar-none">
         {/* Splash screen */}
         <div className="splash">
           <div className="splash_logo">KARIM</div>
@@ -49,11 +49,6 @@ export default function RootLayout({
               <rect width="100%" height="100%" />
             </svg>
           </div>
-        </div>
-
-        <Header />
-        <div id="particles" className="relative">
-          <ParticlesComponent />
         </div>
 
         <div id="children" className="relative z-40">
