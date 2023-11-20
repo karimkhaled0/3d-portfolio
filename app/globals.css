@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://assets.soracom.io/fonts/aeonik/Aeonik.css");
+@import url("https://assets.soracom.io/fonts/source-han-sans/SourceHanSansJP-VF.css");
 
 @layer base {
   :root {
@@ -26,7 +28,7 @@
     --ring: 262.1 83.3% 57.8%;
     --radius: 0.75rem;
   }
- 
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -49,11 +51,12 @@
     --ring: 263.4 70% 50.4%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -116,7 +119,6 @@ canvas {
   left: 0;
   height: 10px;
   width: 10px;
-  background-color: #000;
   border-radius: 200px;
   pointer-events: none;
   text-align: center;
@@ -131,4 +133,96 @@ canvas {
   font-size: inherit;
   pointer-events: none;
   margin: auto;
+}
+
+
+/* arrow animation */
+
+.button-circle {
+  align-items: center;
+  display: flex
+}
+
+.button-circle span {
+  white-space: nowrap
+}
+
+.button-circle:active .button-circle__mask-icon,
+.button-circle:focus-visible .button-circle__mask-icon,
+.button-circle:hover .button-circle__mask-icon {
+  -webkit-clip-path: circle(100%);
+  clip-path: circle(100%)
+}
+
+.button-circle_outline .button-circle__base-icon {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .3)
+}
+
+.button-circle_outline .button-circle__mask-icon {
+  background-color: #000
+}
+
+.button-circle_outline_black .button-circle__base-icon {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .3)
+}
+
+.button-circle_outline_black .button-circle__mask-icon {
+  background-color: #000
+}
+
+.button-circle_outline_white .button-circle__base-icon {
+  background-color: transparent;
+  border: 1px solid hsla(0, 0%, 100%, .3)
+}
+
+.button-circle_outline_white .button-circle__mask-icon {
+  background-color: #fff
+}
+
+.button-circle_solid .button-circle__mask-icon {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .3)
+}
+
+.button-circle_solid .button-circle__base-icon {
+  background-color: #000
+}
+
+.button-circle__icon {
+  display: inline-block;
+  margin-left: 2.05vw;
+  position: relative
+}
+
+.button-circle__mask-icon {
+  -webkit-clip-path: circle(0);
+  clip-path: circle(0);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: -webkit-clip-path .89s cubic-bezier(.33, 1, .68, 1);
+  transition: clip-path .89s cubic-bezier(.33, 1, .68, 1);
+  transition: clip-path .89s cubic-bezier(.33, 1, .68, 1), -webkit-clip-path .89s cubic-bezier(.33, 1, .68, 1);
+  width: 100%;
+  z-index: 200
+}
+
+.base-icon {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  height: clamp(10px, 10.26vw, 55px);
+  justify-content: center;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  width: clamp(10px, 10.26vw, 55px)
+}
+
+.base-icon svg {
+  height: 100%;
+  width: 100%
 }

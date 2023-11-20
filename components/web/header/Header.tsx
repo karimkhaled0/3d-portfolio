@@ -27,8 +27,7 @@ const Header = (props: Props) => {
 
   return (
     <header
-      id="nav"
-      className={`h-[clamp(45px,3.57vw,200px)] bg-[hsla(0,0%,100%,.5)] backdrop-blur-sm items-center text-white flex fixed 
+      className={`h-20 bg-[hsla(0,0%,100%,.5)] backdrop-blur-sm items-center text-white flex fixed 
       top-0 left-0 transition-all duration-250 ease-in-out w-full transform will-change z-50 ${
         visible ? "translate-y-0" : "-translate-y-20"
       }`}

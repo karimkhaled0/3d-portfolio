@@ -2,19 +2,20 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
-import { MouseEvent, Suspense, useRef } from "react";
+import { MouseEvent, Suspense, useEffect, useRef, useState } from "react";
 import ManModel from "./ManModel";
 
-type Props = {
-  invertedEnter: (event: MouseEvent<HTMLDivElement>) => void;
-  mouseLeave: (event: MouseEvent<HTMLDivElement>) => void;
-};
+type Props = {};
 
-const Hero = ({ invertedEnter, mouseLeave }: Props) => {
-  const [text, count] = useTypewriter({
-    words: ["Ready to build your next project ?"],
-    loop: false,
-    delaySpeed: 500000,
+const Hero = (props: Props) => {
+  const [text] = useTypewriter({
+    words: [
+      "                ",
+      "Ready to build your next project ?",
+      "Let's get started !",
+    ],
+    loop: 1,
+    deleteSpeed: 50,
   });
 
   const ref = useRef<HTMLDivElement>(null);
@@ -23,6 +24,7 @@ const Hero = ({ invertedEnter, mouseLeave }: Props) => {
     offset: ["1 0", "1.33 1"],
   });
   const scaleProgress = useTransform(scrollYProgress, [1, 0], [1, 0.9]);
+
   return (
     <div className="flex justify-between w-full">
       <motion.div
@@ -33,7 +35,7 @@ const Hero = ({ invertedEnter, mouseLeave }: Props) => {
         }}
         className="space-y-5 w-full cursor-default my-40 mx-20"
       >
-        <h1 className="text-[150px] leading-none inverted">
+        <h1 className="text-[150px] font-bold leading-none inverted">
           <motion.span
             whileHover={{
               color: "#8b5cf6",
@@ -119,15 +121,11 @@ const Hero = ({ invertedEnter, mouseLeave }: Props) => {
             D
           </motion.span>
         </h1>
-        <h2
-          onMouseEnter={invertedEnter}
-          onMouseLeave={mouseLeave}
-          className="text-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-transparent bg-clip-text px-4 py-1 tracking-[20px] rounded-sm"
-        >
+        <h2 className="text-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-transparent bg-clip-text px-4 py-1 tracking-[20px] rounded-sm">
           FULL STACK DEVELOPER
         </h2>
-        <div className="flex items-center">
-          <h2 className="text-xl mx-4 opacity-70 tracking-[5px]">{text}</h2>
+        <div className="flex items-center text-black font-medium">
+          <h2 className="text-xl mx-4 tracking-[5px]">{text}</h2>
           <Cursor cursorColor="#000000" />
         </div>
       </motion.div>

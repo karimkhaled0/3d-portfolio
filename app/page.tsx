@@ -8,13 +8,9 @@ import { motion } from "framer-motion";
 import Projects from "@/components/web/main/Projects";
 import Header from "@/components/web/header/Header";
 import Velocity from "@/components/web/main/Velocity";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 
 export default function Home() {
-  // test mouse hover
-  // const [isHovered, setIsHovered] = useState(false);
-  // const { x, y } = useMousePosition();
-  // const size = isHovered ? 20 : 20;
-
   const [isMobile, setIsMobile] = useState(false);
   const [cursorText, setCursorText] = useState("");
   const [cursorVariant, setCursorVariant] = useState("default");
@@ -39,15 +35,17 @@ export default function Home() {
   const variants = {
     default: {
       opacity: 1,
-      height: 15,
-      width: 15,
+      height: 20,
+      width: 20,
       fontSize: "16px",
+      backgroundColor: "#fff",
       x: mouseXPosition - 8,
       y: mouseYPosition - 8,
       transition: {
         type: "spring",
-        mass: 0.6,
+        mass: 0.2,
       },
+      mixBlendMode: "difference" as const,
     },
     project: {
       opacity: 1,
@@ -57,29 +55,15 @@ export default function Home() {
       width: 150,
       fontSize: "30px",
       lineHeight: "40px",
-      x: mouseXPosition - 32,
-      y: mouseYPosition - 32,
+      x: mouseXPosition - 70,
+      y: mouseYPosition - 70,
       backgroundColor: "#fff",
-    },
-    inverted: {
-      opacity: 1,
-      height: 15,
-      width: 15,
-      fontSize: "16px",
-      backgroundColor: "#fff",
-      color: "#000",
-      x: mouseXPosition - 8,
-      y: mouseYPosition - 8,
-      transition: {
-        type: "spring",
-        mass: 0.6,
-      },
     },
   };
 
   const spring = {
     type: "spring",
-    stiffness: 200,
+    stiffness: 1000,
     damping: 28,
   };
 
@@ -88,15 +72,9 @@ export default function Home() {
     setCursorVariant("project");
   }
 
-  function invertedEnter(event: MouseEvent<HTMLDivElement>) {
-    setCursorText("");
-    // setIsHovered(true);
-  }
-
   function mouseLeave(event: MouseEvent<HTMLDivElement>) {
     setCursorText("");
     setCursorVariant("default");
-    // setIsHovered(false);
   }
 
   useEffect(() => {
@@ -114,7 +92,7 @@ export default function Home() {
       <Velocity />
     </main>
   ) : (
-    <main ref={ref} className={'relative"'}>
+    <main ref={ref} className={"relative bg-white"}>
       <Header />
       <motion.div
         variants={variants}
@@ -125,7 +103,7 @@ export default function Home() {
         <span className="cursorText">{cursorText}</span>
       </motion.div>
       <section id="#" className="mt-20">
-        <Hero invertedEnter={invertedEnter} mouseLeave={mouseLeave} />
+        <Hero />
       </section>
       <Velocity />
       <Projects projectEnter={projectEnter} mouseLeave={mouseLeave} />

@@ -31,7 +31,7 @@ const Projects = ({ projectEnter, mouseLeave }: Props) => {
             projectDate="2023"
             projectDescription="An innovative real-estate development company that focuses on constructing sustainable and cost-effective properties while minimizing environmental impacts."
             projectTech={["Backend", "Frontend"]}
-            splineURL="https://prod.spline.design/kMnroCyRbU61pnpW/scene.splinecode"
+            imageURL="/mobile.jpg"
             projectURL="mekaniku"
           />
           <Project
@@ -42,8 +42,8 @@ const Projects = ({ projectEnter, mouseLeave }: Props) => {
             projectDate="2023"
             projectDescription="An innovative real-estate development company that focuses on constructing sustainable and cost-effective properties while minimizing environmental impacts."
             projectTech={["Backend", "Frontend"]}
-            splineURL="https://prod.spline.design/kMnroCyRbU61pnpW/scene.splinecode"
-            projectURL="mekaniku"
+            imageURL="/mobile.jpg"
+            projectURL="test"
           />
           <Project
             className="bg-gray-500"
@@ -53,24 +53,79 @@ const Projects = ({ projectEnter, mouseLeave }: Props) => {
             projectDate="2023"
             projectDescription="An innovative real-estate development company that focuses on constructing sustainable and cost-effective properties while minimizing environmental impacts."
             projectTech={["Backend", "Frontend"]}
-            splineURL="https://prod.spline.design/kMnroCyRbU61pnpW/scene.splinecode"
+            imageURL="/mobile.jpg"
             projectURL="mekaniku"
           />
           <div className="absolute z-50 top-1/2 -right-[650px] transform -translate-x-1/2 -translate-y-1/2">
             <div className="flex flex-col items-center justify-center space-y-5">
-              <h3 className="text-black text-6xl font-medium">Want More?</h3>
-              <Link href={"/projects"} className="flex items-center space-x-5">
-                <span className="text-2xl">View showcase</span>
-                <motion.div
-                  whileHover={{
-                    backgroundColor: "black",
-                    color: "white",
+              <h3 className="text-black text-6xl font-semibold">Want more?</h3>
+              <Link
+                href={"/projects"}
+                className="button-circle button-circle_outline space-x-5"
+              >
+                <h2 className="text-black text-xl font-medium">
+                  View showcase
+                </h2>
+                <div
+                  className="button-circle__icon"
+                  style={{
+                    translate: "none",
+                    rotate: "none",
+                    scale: "none",
+                    transform: "translate(0px, 0px)",
                   }}
-                  transition={{ duration: 2 }}
-                  className="border border-gray-500 p-2 rounded-full"
                 >
-                  <ArrowRight className="h-7 w-7" />
-                </motion.div>
+                  <div className="base-icon button-circle__base-icon">
+                    <div className="base-icon">
+                      <svg
+                        width="40"
+                        height="41"
+                        viewBox="0 0 40 41"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line
+                          x1="14"
+                          y1="20.5651"
+                          x2="25"
+                          y2="20.5651"
+                          stroke="black"
+                          stroke-width="1.21739"
+                        ></line>
+                        <path
+                          d="M20.3203 16L24.8855 20.5652L20.6247 24.8261"
+                          stroke="black"
+                          stroke-width="1.21739"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="base-icon button-circle__mask-icon">
+                    <div className="base-icon">
+                      <svg
+                        width="40"
+                        height="41"
+                        viewBox="0 0 40 41"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line
+                          x1="14"
+                          y1="20.5651"
+                          x2="25"
+                          y2="20.5651"
+                          stroke="white"
+                          stroke-width="1.21739"
+                        ></line>
+                        <path
+                          d="M20.3203 16L24.8855 20.5652L20.6247 24.8261"
+                          stroke="white"
+                          stroke-width="1.21739"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </Link>
             </div>
           </div>

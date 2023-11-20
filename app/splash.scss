@@ -37,13 +37,12 @@
 }
 
 //theme
-$yellow: #fff;
+$yellow: #d0bff8;
 $black: #8b5cf6;
 $bg: #191919;
 $lines: #8b5cf6;
 body {
   background-color: $bg;
-  font-family: "Open Sans", sans-serif;
 }
 
 .splash {
@@ -144,16 +143,7 @@ body {
       }
     }
   }
-}
-
-#nav {
-  opacity: 0;
-  @include animation("on .6s ease-in-out 3.7s forwards");
-}
-
-#particles {
-  opacity: 0;
-  @include animation("on .6s ease-in-out 3.7s forwards");
+  @include animation("off .6s ease-in-out 3.7s forwards");
 }
 
 #children {

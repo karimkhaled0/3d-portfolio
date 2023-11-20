@@ -3,11 +3,6 @@ import "./globals.css";
 import "./splash.scss";
 import { headers } from "next/headers";
 import MobileHeader from "@/components/mobile/header/MobileHeader";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/mousewheel";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +20,7 @@ export default function RootLayout({
   if (isMobile) {
     return (
       <html lang="en">
-        <body className="min-h-screen font-cabin scrollbar-none bg-white cursor-none">
+        <body className="min-h-screen font-aeonik scrollbar-none cursor-none">
           <MobileHeader />
           <div className="relative z-30">{children}</div>
         </body>
@@ -35,7 +30,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="min-h-screen font-cabin scrollbar-none">
+      <body className="min-h-screen font-aeonik bg-white scrollbar-none">
         {/* Splash screen */}
         <div className="splash">
           <div className="splash_logo">KARIM</div>

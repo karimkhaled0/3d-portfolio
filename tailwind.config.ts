@@ -73,6 +73,12 @@ module.exports = {
     },
     fontFamily: {
       cabin: ["Cabin", "sans-serif"],
+      aeonik: [
+        '"Aeonik", "Source Han Sans JP", "Arial", "Helvetica", "sans-serif"',
+        {
+          fontFeatureSettings: '"ss02", "ss08"',
+        },
+      ],
     },
   },
   plugins: [require("tailwindcss-animate"), require("tailwind-scrollbar")],

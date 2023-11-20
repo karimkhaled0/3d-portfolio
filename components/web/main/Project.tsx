@@ -2,13 +2,14 @@
 
 import { cn } from "@/lib/utils";
 import Spline from "@splinetool/react-spline";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { MouseEvent, Suspense } from "react";
 
 type Props = {
   projectEnter: (event: MouseEvent<HTMLDivElement>) => void;
   projectLeave: (event: MouseEvent<HTMLDivElement>) => void;
-  splineURL: string;
+  imageURL: string;
   projectName: string;
   projectDescription: string;
   projectDate: string;
@@ -20,7 +21,7 @@ type Props = {
 const Project = ({
   projectEnter,
   projectLeave,
-  splineURL,
+  imageURL,
   projectName,
   projectDescription,
   projectDate,
@@ -39,11 +40,14 @@ const Project = ({
       onMouseEnter={projectEnter}
       onMouseLeave={projectLeave}
     >
-      {/* Model */}
+      {/* Image */}
       <div className="">
-        <Suspense fallback={null}>
-          <Spline scene={splineURL} />
-        </Suspense>
+        <Image
+          src={imageURL}
+          layout="fill"
+          objectFit="cover"
+          alt="Project Image"
+        />
       </div>
 
       {/* Project Details */}

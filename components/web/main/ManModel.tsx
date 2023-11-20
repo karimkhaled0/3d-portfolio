@@ -1,8 +1,9 @@
 import { Canvas, useLoader } from "@react-three/fiber";
 import { PCDLoader } from "three/addons/loaders/PCDLoader.js";
-import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import { Suspense, useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
+import { OrbitControls } from "@react-three/drei";
+import { OrbitControls as OrbitProps } from "three-stdlib";
 
 const Model = () => {
   return (
@@ -20,6 +21,8 @@ const Model = () => {
         autoRotate
         autoRotateSpeed={0.05}
         position={[0, 1, 15]}
+        maxAzimuthAngle={Math.PI / 4}
+        minAzimuthAngle={-Math.PI / 4}
       />
     </Canvas>
   );
@@ -35,7 +38,7 @@ const ModelContainer = () => {
       points.name = "Zaghetto.pcd";
       scene.add(points);
       // console.log(positions)
-      scene.rotateY(-0.7);
+      scene.rotateY(-0.9);
       scene.traverse((child) => {
         if (child instanceof THREE.Points) {
           const pointsMaterial = child.material as THREE.PointsMaterial;

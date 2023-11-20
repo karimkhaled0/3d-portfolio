@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { MouseEvent, useRef } from "react";
 import {
   motion,
   useScroll,
@@ -17,6 +17,8 @@ interface ParallaxProps {
   baseVelocity: number;
   flipped?: boolean;
 }
+
+interface Props {}
 
 function ParallaxText({
   children,
@@ -79,7 +81,7 @@ function ParallaxText({
   );
 }
 
-export default function Velocity() {
+export default function Velocity(props: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -93,7 +95,7 @@ export default function Velocity() {
         scale: scaleProgress,
         opacity: scrollYProgress,
       }}
-      className="relative pt-40 space-y-5"
+      className="relative pt-40 pb-20 space-y-5"
     >
       <ParallaxText baseVelocity={-2}>
         Projects&#160;&#160;Projects&#160;&#160;Projects
